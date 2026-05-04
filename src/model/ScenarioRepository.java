@@ -57,6 +57,26 @@ public class ScenarioRepository {
         starter.addDimension(dim4);
 
         customScenarios.add(starter);
+
+        // --- Custom Advanced Scenario ---
+        Scenario advanced = new Scenario("Custom Advanced Scenario", "Custom", "Process");
+
+        QualityDimension sprintEff = new QualityDimension("Sprint Efficiency", 30);
+        sprintEff.addMetric(new Metric("Velocity", 50, "Higher", 0, 100, "points", 74));
+        sprintEff.addMetric(new Metric("Sprint Goal Met Rate", 50, "Higher", 0, 100, "%", 83));
+        advanced.addDimension(sprintEff);
+
+        QualityDimension codeQuality = new QualityDimension("Code Quality", 35);
+        codeQuality.addMetric(new Metric("Code Coverage", 50, "Higher", 0, 100, "%", 68));
+        codeQuality.addMetric(new Metric("Bug Density", 50, "Lower", 0, 50, "bugs/KLOC", 6));
+        advanced.addDimension(codeQuality);
+
+        QualityDimension teamCollab = new QualityDimension("Team Collaboration", 35);
+        teamCollab.addMetric(new Metric("PR Review Time", 50, "Lower", 0, 48, "hours", 12));
+        teamCollab.addMetric(new Metric("Meeting Efficiency", 50, "Higher", 0, 100, "%", 78));
+        advanced.addDimension(teamCollab);
+
+        customScenarios.add(advanced);
         scenarioMap.put("Custom", customScenarios);
     }
 
